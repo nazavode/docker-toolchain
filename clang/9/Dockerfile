@@ -22,3 +22,6 @@ RUN wget -O ./install-cmake -q https://cmake.org/files/v3.10/cmake-3.10.3-Linux-
     chmod +x ./install-cmake &&\
     ./install-cmake --skip-license
 RUN rm -rf ./install-cmake /var/lib/apt/lists/*
+ENV CC=clang-9    \
+    CXX=clang++-9 \
+    CXXFLAGS="-stdlib=libc++"

@@ -6,6 +6,6 @@ RUN apt update -y &&\
     chmod +x ./install-cmake &&\
     ./install-cmake --skip-license
 RUN rm -rf ./install-cmake /var/lib/apt/lists/*
-ENV CC=gcc-7  \
-    CXX=g++-7 \
-    FC=gfortran-7
+ENV CC=gcc  \
+    CXX=g++ \
+    FC=gfortran

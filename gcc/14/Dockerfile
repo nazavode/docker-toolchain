@@ -1,4 +1,4 @@
-FROM gcc:8
+FROM gcc:14
 RUN apt-get update -y \
  && apt-get install -y --no-install-recommends \
     git \

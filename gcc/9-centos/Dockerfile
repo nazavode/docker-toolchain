@@ -1,4 +1,5 @@
 FROM centos:centos7.6.1810
+LABEL org.opencontainers.image.source="https://github.com/nazavode/docker-toolchain"
 
 ENV LANG="en_US.UTF-8"
 ENV LC_CTYPE="en_US.UTF-8"

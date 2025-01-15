@@ -1,4 +1,6 @@
 FROM gcc:13
+LABEL org.opencontainers.image.source="https://github.com/nazavode/docker-toolchain"
+
 RUN apt-get update -y \
  && apt-get install -y --no-install-recommends \
     git \

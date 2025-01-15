@@ -1,9 +1,10 @@
 FROM registry.access.redhat.com/ubi9/ubi:9.5-1736404036
+LABEL org.opencontainers.image.source="https://github.com/nazavode/docker-toolchain"
 
-RUN dnf -y install      \
-      gcc-toolset-14    \
-      git               \
-      wget              \
+RUN dnf -y install   \
+      gcc-toolset-14 \
+      git            \
+      wget           \
  # cmake
  && wget -O /tmp/install-cmake -q https://github.com/Kitware/CMake/releases/download/v3.30.2/cmake-3.30.2-linux-x86_64.sh \
  && chmod +x /tmp/install-cmake \

@@ -57,15 +57,8 @@ jobs:
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
 
       - name: Build Docker image
-        # working-directory: ${{ env.IMAGE_ROOT }}
         run: |
-          pwd
-          cd $GITHUB_WORKSPACE
-          pwd
-          ls -ltrah
-          cd ${{ matrix.toolchain }}/${{ matrix.version }}
-          pwd
-          ls -ltrah
+          cd ${GITHUB_WORKSPACE}/${{ matrix.toolchain }}/${{ matrix.version }}
           docker build -t ${REGISTRY}/${IMAGE_NAME} -f Dockerfile .
       
       - name: Log in to the Container registry
@@ -75,24 +68,9 @@ jobs:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      
-      - name: Extract metadata (tags, labels) for Docker
-        if: ${{ github.ref == 'refs/heads/main' }}
-        uses: docker/metadata-action@369eb591f429131d6889c46b94e711f089e6ca96
-        with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
       - name: Push Docker image
         if: ${{ github.ref == 'refs/heads/main' }}
         id: push
         run: |
           docker push ${REGISTRY}/${IMAGE_NAME}
-
-      # Fixme: the 'build' step doesn't output the digest at the moment
-      # - name: Generate artifact attestation
-      #   if: ${{ github.ref == 'refs/heads/main' }}
-      #   uses: actions/attest-build-provenance@7668571508540a607bdfd90a87a560489fe372eb
-      #   with:
-      #     subject-name: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-      #     subject-digest: ${{ steps.push.outputs.digest }}
-      #     push-to-registry: true

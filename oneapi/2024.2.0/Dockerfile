@@ -31,8 +31,9 @@ RUN apt-get update -y \
  # cleanup
  && rm -rf /tmp/* /var/lib/apt/lists/*
 
-ENV CC=icpc \
-    CXX=icpx
+ENV CC=icx \
+    CXX=icpx \
+    FC=ifx
 
 COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]

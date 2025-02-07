@@ -7,7 +7,6 @@ RUN apt-get update -y \
     wget \
     numdiff \
     libblas-dev \
-    liblapack-dev \
  # cmake
  && wget -O /tmp/install-cmake -q https://github.com/Kitware/CMake/releases/download/v3.30.2/cmake-3.30.2-linux-x86_64.sh \
  && chmod +x /tmp/install-cmake \

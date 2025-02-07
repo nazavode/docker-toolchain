@@ -46,6 +46,8 @@ jobs:
           - toolchain: clang
             version: 19
           - toolchain: mojo
+          - toolchain: oneapi
+            version: 2024.2.0
 
     env:
       REGISTRY: ghcr.io

@@ -16,8 +16,8 @@ RUN dnf -y install   \
  && wget -q -O - https://archives.boost.io/release/1.86.0/source/boost_1_86_0.tar.gz | tar xzf - -C /tmp/boost --strip-components 1 \
  && cd /tmp/boost \
  && ./bootstrap.sh --with-toolset=gcc --with-libraries=graph,program_options --prefix=/opt/rh/gcc-toolset-14/root/usr \
- && ./b2 toolset=gcc link=static --with-graph --with-program_options stage \
- && ./b2 toolset=gcc link=static --with-graph --with-program_options install \
+ && ./b2 cxxstd=17 toolset=gcc link=static --with-graph --with-program_options stage \
+ && ./b2 cxxstd=17 toolset=gcc link=static --with-graph --with-program_options install \
  # openblas
  && mkdir -p /tmp/openblas/build \
  && wget -q -O - https://github.com/OpenMathLib/OpenBLAS/archive/refs/tags/v0.3.27.tar.gz | tar xzf - -C /tmp/openblas --strip-components 1 \

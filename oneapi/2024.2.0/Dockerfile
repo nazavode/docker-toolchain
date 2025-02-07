@@ -28,9 +28,10 @@ RUN apt-get update -y \
  && apt-get clean autoclean \
  && apt-get autoremove -y \
  # cleanup
- && rm -rf /tmp/* /var/lib/apt/lists/* \
- # Setup environment variables automatically on startup
- && echo ". /opt/intel/oneapi/setvars.sh" >> ~/.bashrc
+ && rm -rf /tmp/* /var/lib/apt/lists/*
 
 ENV CC=icpc \
     CXX=icpx
+
+COPY entrypoint.sh /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]

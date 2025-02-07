@@ -13,6 +13,8 @@ RUN apt-get update -y \
  && /tmp/install-cmake --prefix=/usr --skip-license \
  # Download and install Intel OneAPI standalone compiler
  && wget --no-verbose --no-check-certificate -O /tmp/intel_dpcpp.sh https://registrationcenter-download.intel.com/akdlm/IRC_NAS/6780ac84-6256-4b59-a647-330eb65f32b6/l_dpcpp-cpp-compiler_p_2024.2.0.495_offline.sh \
+ && echo "9463aa979314d2acc51472d414ffcee032e9869ca85ac6ff4c71d39500e5173d /tmp/intel_dpcpp.sh" > /tmp/checksum.txt \
+ && sha256sum --check /tmp/checksum.txt \
  && sh /tmp/intel_dpcpp.sh -a --action install --components intel.oneapi.lin.dpcpp-cpp-compiler --silent --eula accept \
  # Needed just to allow boost to find OneAPI
  && . /opt/intel/oneapi/setvars.sh \

@@ -21,8 +21,8 @@ RUN apt-get update -y \
  && wget -q -O - https://archives.boost.io/release/1.86.0/source/boost_1_86_0.tar.gz | tar xzf - -C /tmp/boost --strip-components 1 \
  && cd /tmp/boost \
  && ./bootstrap.sh --with-toolset=intel-linux --with-libraries=graph,program_options --prefix=/usr \
- && ./b2 toolset=intel-linux --with-graph --with-program_options stage \
- && ./b2 toolset=intel-linux --with-graph --with-program_options install \
+ && ./b2 cxxstd=17 toolset=intel-linux --with-graph --with-program_options stage \
+ && ./b2 cxxstd=17 toolset=intel-linux --with-graph --with-program_options install \
  # Remove unneeded stuff
  && apt-get remove wget -y \
  && apt-get clean autoclean \

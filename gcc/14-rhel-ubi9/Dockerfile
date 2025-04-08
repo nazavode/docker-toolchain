@@ -13,7 +13,7 @@ RUN dnf -y install   \
  && . /opt/rh/gcc-toolset-14/enable \
  # boost
  && mkdir -p /tmp/boost \
- && wget -q -O - https://archives.boost.io/release/1.86.0/source/boost_1_86_0.tar.gz | tar xzf - -C /tmp/boost --strip-components 1 \
+ && wget -q -O - https://archives.boost.io/release/1.87.0/source/boost_1_87_0.tar.gz | tar xzf - -C /tmp/boost --strip-components 1 \
  && cd /tmp/boost \
  && ./bootstrap.sh --with-toolset=gcc --with-libraries=graph,program_options --prefix=/opt/rh/gcc-toolset-14/root/usr \
  && ./b2 cxxstd=17 toolset=gcc link=static --with-graph --with-program_options stage \

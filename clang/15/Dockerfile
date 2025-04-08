@@ -17,7 +17,7 @@ RUN apt-get update -y \
  && ln -s /usr/bin/lld-15 /usr/bin/lld \
  && ln -s /usr/bin/llvm-symbolizer-15 /usr/bin/llvm-symbolizer \
  # cmake
- && wget -O /tmp/install-cmake -q https://github.com/Kitware/CMake/releases/download/v3.30.2/cmake-3.30.2-linux-x86_64.sh \
+ && wget -O /tmp/install-cmake -q https://github.com/Kitware/CMake/releases/download/v3.31.6/cmake-3.31.6-linux-x86_64.sh \
  && chmod +x /tmp/install-cmake \
  && /tmp/install-cmake --prefix=/usr --skip-license \
  # boost

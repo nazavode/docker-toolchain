@@ -47,7 +47,6 @@ jobs:
             version: 19
           - toolchain: clang
             version: 20
-          - toolchain: mojo
           - toolchain: oneapi
             version: 2024.2.0
 

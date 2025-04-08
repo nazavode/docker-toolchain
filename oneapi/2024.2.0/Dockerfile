@@ -7,7 +7,7 @@ RUN apt-get update -y \
     wget \
     libblas-dev \
  # cmake
- && wget -O /tmp/install-cmake -q https://github.com/Kitware/CMake/releases/download/v3.30.2/cmake-3.30.2-linux-x86_64.sh \
+ && wget -O /tmp/install-cmake -q https://github.com/Kitware/CMake/releases/download/v3.31.6/cmake-3.31.6-linux-x86_64.sh \
  && chmod +x /tmp/install-cmake \
  && /tmp/install-cmake --prefix=/usr --skip-license \
  # Download and install Intel OneAPI standalone compiler

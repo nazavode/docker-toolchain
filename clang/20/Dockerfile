@@ -32,7 +32,7 @@ deb-src http://apt.llvm.org/jammy/ llvm-toolchain-jammy-20 main\n" >> /etc/apt/s
  && ln -s /usr/bin/clang-tidy-20 /usr/bin/clang-tidy \
  && ln -s /usr/bin/clang-format-20 /usr/bin/clang-format \
  # cmake
- && wget -O /tmp/install-cmake -q https://github.com/Kitware/CMake/releases/download/v3.30.2/cmake-3.30.2-linux-x86_64.sh \
+ && wget -O /tmp/install-cmake -q https://github.com/Kitware/CMake/releases/download/v4.0.0/cmake-4.0.0-linux-x86_64.sh \
  && chmod +x /tmp/install-cmake \
  && /tmp/install-cmake --prefix=/usr --skip-license \
  # boost

@@ -5,6 +5,8 @@ RUN dnf -y install   \
       gcc-toolset-14 \
       git            \
       wget           \
+      glibc-static   \
+      rpm-build      \
  # cmake
  && wget -O /tmp/install-cmake -q https://github.com/Kitware/CMake/releases/download/v3.31.6/cmake-3.31.6-linux-x86_64.sh \
  && chmod +x /tmp/install-cmake \
@@ -27,3 +29,6 @@ RUN dnf -y install   \
  # cleanup
  && dnf clean -y all \
  && rm -fr /tmp/*
+
+COPY entrypoint.sh /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]

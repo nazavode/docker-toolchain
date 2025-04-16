@@ -6,6 +6,7 @@ RUN dnf -y install   \
       gcc-toolset-14 \
       git            \
       wget           \
+      rpm-build      \
       intel-oneapi-dpcpp-cpp-2024.2 \
       intel-oneapi-mkl-devel-2024.0-2024.0.0-49656 \
  # cmake

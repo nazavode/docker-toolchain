@@ -30,5 +30,8 @@ RUN dnf -y install   \
  && dnf clean -y all \
  && rm -fr /tmp/*
 
+# Make sure CMake finder finds CBLAS header
+ENV CBLAS_INCLUDE_DIR=/opt/rh/gcc-toolset-14/root/usr/include/openblas
+
 COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]

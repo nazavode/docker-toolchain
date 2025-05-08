@@ -19,6 +19,10 @@ RUN apt-get update -y \
  && ./b2 cxxstd=17 toolset=gcc --with-graph --with-program_options install \
  # cleanup
  && rm -rf /tmp/* /var/lib/apt/lists/*
+
+# Make sure CMake finder finds CBLAS header
+ENV CBLAS_INCLUDE_DIR=/usr/include/openblas
+
 ENV CC=gcc  \
     CXX=g++ \
     FC=gfortran

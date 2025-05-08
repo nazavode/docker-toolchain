@@ -27,6 +27,9 @@ RUN apk add --no-cache \
  && make install \
  && rm -fr /tmp/*
 
+# Make sure CMake finder finds CBLAS header
+ENV CBLAS_INCLUDE_DIR=/usr/include/openblas
+
 ENV CC=gcc  \
     CXX=g++ \
     FC=gfortran

@@ -2,11 +2,15 @@ FROM registry.access.redhat.com/ubi9/ubi:9.5-1736404036
 LABEL org.opencontainers.image.source="https://github.com/nazavode/docker-toolchain"
 
 RUN dnf -y install   \
-      gcc-toolset-14 \
       git            \
       wget           \
       glibc-static   \
       rpm-build      \
+      gcc-toolset-14 \
+      gcc-toolset-14-libasan-devel  \
+      gcc-toolset-14-liblsan-devel  \
+      gcc-toolset-14-libtsan-devel  \
+      gcc-toolset-14-libubsan-devel \
  # cmake
  && wget -O /tmp/install-cmake -q https://github.com/Kitware/CMake/releases/download/v3.31.6/cmake-3.31.6-linux-x86_64.sh \
  && chmod +x /tmp/install-cmake \

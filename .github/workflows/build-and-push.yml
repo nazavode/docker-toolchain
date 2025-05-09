@@ -22,9 +22,7 @@ jobs:
       matrix:
         include:
           - toolchain: gcc
-            version: 8
-          - toolchain: gcc
-            version: 9
+            version: 11
           - toolchain: gcc
             version: 12
           - toolchain: gcc
@@ -37,12 +35,6 @@ jobs:
             version: 14
           - toolchain: gcc
             version: 14-rhel-ubi9
-          - toolchain: clang
-            version: 15
-          - toolchain: clang
-            version: 17
-          - toolchain: clang
-            version: 18
           - toolchain: clang
             version: 19
           - toolchain: clang

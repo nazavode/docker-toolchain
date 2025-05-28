@@ -24,10 +24,10 @@ RUN dnf -y install   \
  && ./bootstrap.sh --with-toolset=intel-linux --with-libraries=graph,program_options --prefix=/opt/rh/gcc-toolset-14/root/usr \
  && ./b2 cxxstd=17 toolset=intel-linux link=static --with-graph --with-program_options stage \
  && ./b2 cxxstd=17 toolset=intel-linux link=static --with-graph --with-program_options install \
- # CUDA 12.8
+ # CUDA 12.1
  && dnf config-manager --add-repo https://developer.download.nvidia.com/compute/cuda/repos/rhel9/x86_64/cuda-rhel9.repo \
  && dnf clean all \
- && dnf install -y cuda-minimal-build-12-8 \
+ && dnf install -y cuda-minimal-build-12-1 \
  # OneAPI CodePlay plugin for NVIDIA GPUs
  && curl -LJ "https://developer.codeplay.com/api/v1/products/download?product=oneapi&variant=nvidia&version=2024.2.0&filters[]=12.0&filters[]=linux" -o /tmp/codeplay.sh \
  && echo "0622df0054364b01e91e7ed72a33cb3281e281db5b0e86579f516b1cc5336b0f /tmp/codeplay.sh" >> /tmp/codeplay_checksum.txt \

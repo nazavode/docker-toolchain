@@ -40,8 +40,6 @@ jobs:
           - toolchain: clang
             version: 20
           - toolchain: oneapi
-            version: 2024.2.0
-          - toolchain: oneapi
             version: 2024.2.0-rhel-ubi9
           - toolchain: oneapi
             version: 2025.1.1-rhel-ubi9

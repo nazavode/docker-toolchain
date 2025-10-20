@@ -29,7 +29,7 @@ RUN dnf -y install   \
  && dnf clean all \
  && dnf install -y cuda-minimal-build-12-1 \
  # OneAPI CodePlay plugin for NVIDIA GPUs
- && curl -LJ "https://developer.codeplay.com/api/v1/products/download?product=oneapi&variant=nvidia&filters[]=linux" -o /tmp/codeplay.sh \
+ && curl --fail-with-body -LJ "https://gitlab.hpc.cineca.it/aguarnie/mirror-codeplay/-/raw/master/oneapi-for-nvidia-gpus-2025.1.1-rocm-all-linux.sh?ref_type=heads&inline=false" -o /tmp/codeplay.sh \
  && echo "45e1d7c42c1915904daf9f3291b2f01622e897c7b661aebd28d6b293ce14fb9d /tmp/codeplay.sh" >> /tmp/codeplay_checksum.txt \
  && sha256sum --check /tmp/codeplay_checksum.txt \
  && sh /tmp/codeplay.sh --yes \

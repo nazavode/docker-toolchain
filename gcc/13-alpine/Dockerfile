@@ -23,7 +23,7 @@ RUN apk add --no-cache \
  && mkdir -p /tmp/openblas/build \
  && wget -q -O - https://github.com/OpenMathLib/OpenBLAS/archive/refs/tags/v0.3.27.tar.gz | tar xzf - -C /tmp/openblas --strip-components 1 \
  && cd /tmp/openblas/build \
- && cmake -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_WITHOUT_LAPACK=ON -DDYNAMIC_ARCH=ON -DUSE_OPENMP=OFF -DBUILD_STATIC_LIBS=ON -DBUILD_TESTING=OFF .. \
+ && cmake -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_WITHOUT_LAPACK=OFF -DDYNAMIC_ARCH=ON -DUSE_OPENMP=OFF -DBUILD_STATIC_LIBS=ON -DBUILD_TESTING=OFF .. \
  && make install \
  && rm -fr /tmp/*
 

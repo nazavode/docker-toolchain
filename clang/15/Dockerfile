@@ -12,6 +12,7 @@ RUN apt-get update -y \
         libc++-15-dev \
         libc++abi-15-dev \
         libblas-dev \
+        liblapack-dev \
  && ln -s /usr/bin/clang-15 /usr/bin/clang \
  && ln -s /usr/bin/clang++-15 /usr/bin/clang++ \
  && ln -s /usr/bin/lld-15 /usr/bin/lld \

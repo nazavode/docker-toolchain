@@ -1,7 +1,9 @@
 FROM registry.access.redhat.com/ubi9/ubi:9.5-1736404036
 LABEL org.opencontainers.image.source="https://github.com/nazavode/docker-toolchain"
 
-RUN dnf -y install   \
+COPY oneAPI.repo /etc/yum.repos.d/oneAPI.repo
+RUN dnf -y update \
+ && dnf -y install   \
       git            \
       wget           \
       glibc-static   \
@@ -11,6 +13,7 @@ RUN dnf -y install   \
       gcc-toolset-14-liblsan-devel  \
       gcc-toolset-14-libtsan-devel  \
       gcc-toolset-14-libubsan-devel \
+      intel-oneapi-mkl-classic-devel-2025.3  \
  # cmake
  && wget -O /tmp/install-cmake -q https://github.com/Kitware/CMake/releases/download/v3.31.6/cmake-3.31.6-linux-x86_64.sh \
  && chmod +x /tmp/install-cmake \
@@ -24,18 +27,9 @@ RUN dnf -y install   \
  && ./bootstrap.sh --with-toolset=gcc --with-libraries=graph,program_options --prefix=/opt/rh/gcc-toolset-14/root/usr \
  && ./b2 cxxstd=17 toolset=gcc link=static --with-graph --with-program_options stage \
  && ./b2 cxxstd=17 toolset=gcc link=static --with-graph --with-program_options install \
- # openblas
- && mkdir -p /tmp/openblas/build \
- && wget -q -O - https://github.com/OpenMathLib/OpenBLAS/archive/refs/tags/v0.3.27.tar.gz | tar xzf - -C /tmp/openblas --strip-components 1 \
- && cd /tmp/openblas/build \
- && cmake -DCMAKE_INSTALL_PREFIX=/opt/rh/gcc-toolset-14/root/usr -DBUILD_WITHOUT_LAPACK=OFF -DDYNAMIC_ARCH=ON -DUSE_OPENMP=OFF -DBUILD_STATIC_LIBS=ON -DBUILD_TESTING=OFF .. \
- && make install \
  # cleanup
  && dnf clean -y all \
  && rm -fr /tmp/*
-
-# Make sure CMake finder finds CBLAS header
-ENV CBLAS_INCLUDE_DIR=/opt/rh/gcc-toolset-14/root/usr/include/openblas
 
 COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]

@@ -3,6 +3,7 @@ LABEL org.opencontainers.image.source="https://github.com/nazavode/docker-toolch
 
 RUN apt-get update -y \
  && apt-get install -y --no-install-recommends \
+       git \
        libblas-dev \
        liblapack-dev \
        make \

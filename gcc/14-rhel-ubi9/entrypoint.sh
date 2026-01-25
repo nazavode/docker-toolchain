@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
-# WARNING: intel setvars scripts mess with a lot of things,
-# including our arguments. Save them for later.
-ARGS="$@"
-
 . /opt/rh/gcc-toolset-14/enable
-. /opt/intel/oneapi/mkl/latest/env/vars.sh
+# Beware: setvars.sh uses global $@ when sourced without arguments;
+# make sure to pass at least an argument to avoid forwarding
+# docker run args to it:
+. /opt/intel/oneapi/setvars.sh --force
+
 export CC=gcc
 export CXX=g++
 export FC=gfortran
 
-exec "$ARGS"
+exec "$@"

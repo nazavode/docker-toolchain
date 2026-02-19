@@ -32,8 +32,8 @@ RUN dnf -y install   \
  && curl --fail-with-body -L "https://github.com/unisa-hpc/oneapi-ur-adapter/releases/download/v2025.3/oneapi-ur-cuda-linux-x86_64-2025.3.sh" -o /tmp/oneapi-ur-cuda-linux-x86_64-2025.3.sh \
  && echo "8cbf18ab93bb1f2b2145aa591814778f1434e46603641f9b13f6fc70f2f531dc  /tmp/oneapi-ur-cuda-linux-x86_64-2025.3.sh" | sha256sum -c - \
  && chmod +x /tmp/oneapi-ur-cuda-linux-x86_64-2025.3.sh \
- && /tmp/oneapi-ur-cuda-linux-x86_64-2025.3.sh --oneapi-root /opt/intel/oneapi
-# cleanup
+ && /tmp/oneapi-ur-cuda-linux-x86_64-2025.3.sh --oneapi-root /opt/intel/oneapi \
+ # cleanup
  && dnf clean -y all \
  && rm -fr /tmp/*
 
